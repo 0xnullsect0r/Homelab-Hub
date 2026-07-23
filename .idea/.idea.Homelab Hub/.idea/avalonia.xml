@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Homelab Hub/App.axaml" value="Homelab Hub.Desktop/Homelab Hub.Desktop.csproj" />
+        <entry key="Homelab Hub/Elements/TopBar.axaml" value="Homelab Hub.Desktop/Homelab Hub.Desktop.csproj" />
+        <entry key="Homelab Hub/Styles.axaml" value="Homelab Hub.Desktop/Homelab Hub.Desktop.csproj" />
+        <entry key="Homelab Hub/Views/MainView.axaml" value="Homelab Hub.Desktop/Homelab Hub.Desktop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

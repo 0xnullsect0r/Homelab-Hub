@@ -3,7 +3,7 @@
              xmlns:local="using:Homelab_Hub"
              x:Class="Homelab_Hub.App"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" follows system theme. "Dark" or "Light" force it. -->
 
     <Application.DataTemplates>
         <local:ViewLocator />
@@ -11,11 +11,83 @@
 
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="/Styles.axaml"></StyleInclude>
+        <StyleInclude Source="/Styles.axaml" />
     </Application.Styles>
-             
+
     <Application.Resources>
-        <SolidColorBrush x:Key="Yellow">Yellow</SolidColorBrush>
+        <ResourceDictionary>
+
+            <!-- Theme-dependent brushes: pick light/dark automatically based on
+                 RequestedThemeVariant / OS theme. Reference these via
+                 {DynamicResource X} anywhere in your Views. -->
+            <ResourceDictionary.ThemeDictionaries>
+
+                <ResourceDictionary x:Key="Dark">
+                    <!-- Backgrounds -->
+                    <SolidColorBrush x:Key="WindowBackground">#1C1C1E</SolidColorBrush>
+                    <SolidColorBrush x:Key="TileBackground">#2C2C2E</SolidColorBrush>
+                    <SolidColorBrush x:Key="TileBackgroundHover">#3A3A3C</SolidColorBrush>
+                    <SolidColorBrush x:Key="TopBarBackground">#2C2C2E</SolidColorBrush>
+                    <SolidColorBrush x:Key="PanelBackground">#242426</SolidColorBrush>
+
+                    <!-- Text -->
+                    <SolidColorBrush x:Key="TextPrimary">#F2F2F7</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextSecondary">#8E8E93</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextMuted">#636366</SolidColorBrush>
+
+                    <!-- Borders -->
+                    <SolidColorBrush x:Key="BorderSubtle">#3A3A3C</SolidColorBrush>
+
+                    <!-- Status -->
+                    <SolidColorBrush x:Key="StatusOnline">#30D158</SolidColorBrush>
+                    <SolidColorBrush x:Key="StatusOffline">#FF453A</SolidColorBrush>
+                    <SolidColorBrush x:Key="StatusUnknown">#8E8E93</SolidColorBrush>
+
+                    <!-- Accent -->
+                    <SolidColorBrush x:Key="AccentBrush">#0A84FF</SolidColorBrush>
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Light">
+                    <!-- Backgrounds -->
+                    <SolidColorBrush x:Key="WindowBackground">#F2F2F7</SolidColorBrush>
+                    <SolidColorBrush x:Key="TileBackground">#FFFFFF</SolidColorBrush>
+                    <SolidColorBrush x:Key="TileBackgroundHover">#E5E5EA</SolidColorBrush>
+                    <SolidColorBrush x:Key="TopBarBackground">#FFFFFF</SolidColorBrush>
+                    <SolidColorBrush x:Key="PanelBackground">#FAFAFA</SolidColorBrush>
+
+                    <!-- Text -->
+                    <SolidColorBrush x:Key="TextPrimary">#1C1C1E</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextSecondary">#6E6E73</SolidColorBrush>
+                    <SolidColorBrush x:Key="TextMuted">#AEAEB2</SolidColorBrush>
+
+                    <!-- Borders -->
+                    <SolidColorBrush x:Key="BorderSubtle">#D1D1D6</SolidColorBrush>
+
+                    <!-- Status -->
+                    <SolidColorBrush x:Key="StatusOnline">#34C759</SolidColorBrush>
+                    <SolidColorBrush x:Key="StatusOffline">#FF3B30</SolidColorBrush>
+                    <SolidColorBrush x:Key="StatusUnknown">#8E8E93</SolidColorBrush>
+
+                    <!-- Accent -->
+                    <SolidColorBrush x:Key="AccentBrush">#007AFF</SolidColorBrush>
+                </ResourceDictionary>
+
+            </ResourceDictionary.ThemeDictionaries>
+
+            <!-- Theme-independent values: sizing, radii, spacing. These don't
+                 change between light/dark, so they live outside ThemeDictionaries. -->
+            <CornerRadius x:Key="TileCornerRadius">20</CornerRadius>
+            <CornerRadius x:Key="PanelCornerRadius">12</CornerRadius>
+
+            <x:Double x:Key="TileSize">96</x:Double>
+            <x:Double x:Key="TileIconSize">44</x:Double>
+            <x:Double x:Key="TopBarHeight">52</x:Double>
+            <x:Double x:Key="AppBarHeight">44</x:Double>
+
+            <Thickness x:Key="TileGridGutter">20</Thickness>
+            <Thickness x:Key="SectionSpacing">0,0,0,32</Thickness>
+
+        </ResourceDictionary>
     </Application.Resources>
-             
+
 </Application>

@@ -1,10 +1,199 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
     <Design.PreviewWith>
-        <Border Padding="20">
-            <!-- Add Controls for Previewer Here -->
+        <Border Padding="20" Background="{DynamicResource WindowBackground}" Width="500">
+            <StackPanel Spacing="16">
+                <TextBlock Classes="SectionHeader" Text="Network"/>
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <Border Classes="Tile">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="4">
+                            <Border Classes="StatusDot StatusOnline" HorizontalAlignment="Right" Margin="0,0,-30,-40"/>
+                            <TextBlock Text="🔀" FontSize="32" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBox Classes="SearchBox" Watermark="Search apps..." Width="200"/>
+                </StackPanel>
+                <Button Classes="IconButton" Content="⚙"/>
+                <Button Classes="AccentButton" Content="Open externally"/>
+            </StackPanel>
         </Border>
     </Design.PreviewWith>
 
-    <!-- Add Styles Here -->
+    <!-- ============================================================ -->
+    <!-- WINDOW / ROOT SURFACES                                       -->
+    <!-- ============================================================ -->
+
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{DynamicResource WindowBackground}"/>
+        <Setter Property="FontFamily" Value="Inter, Segoe UI Variable, Segoe UI, sans-serif"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- TOP BAR / APP BAR                                            -->
+    <!-- ============================================================ -->
+
+    <Style Selector="Border.TopBar">
+        <Setter Property="Background" Value="{DynamicResource TopBarBackground}"/>
+        <Setter Property="Height" Value="{StaticResource TopBarHeight}"/>
+        <Setter Property="Padding" Value="16,0"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
+    <Style Selector="Border.AppBar">
+        <Setter Property="Background" Value="{DynamicResource TopBarBackground}"/>
+        <Setter Property="Height" Value="{StaticResource AppBarHeight}"/>
+        <Setter Property="Padding" Value="12,0"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- TEXT                                                         -->
+    <!-- ============================================================ -->
+
+    <Style Selector="TextBlock.SectionHeader">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+        <Setter Property="LetterSpacing" Value="0.5"/>
+        <Setter Property="Margin" Value="4,0,0,12"/>
+    </Style>
+
+    <Style Selector="TextBlock.TileLabel">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="MaxWidth" Value="{StaticResource TileSize}"/>
+    </Style>
+
+    <Style Selector="TextBlock.Title">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+    </Style>
+
+    <Style Selector="TextBlock.Muted">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextMuted}"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- LAUNCHER TILES                                               -->
+    <!-- ============================================================ -->
+
+    <Style Selector="Border.Tile">
+        <Setter Property="Background" Value="{DynamicResource TileBackground}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource TileCornerRadius}"/>
+        <Setter Property="Width" Value="{StaticResource TileSize}"/>
+        <Setter Property="Height" Value="{StaticResource TileSize}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.12"/>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.08"/>
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="Border.Tile:pointerover">
+        <Setter Property="Background" Value="{DynamicResource TileBackgroundHover}"/>
+    </Style>
+
+    <Style Selector="Border.Tile:pressed">
+        <Setter Property="RenderTransform" Value="scale(0.96)"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- STATUS DOTS                                                  -->
+    <!-- ============================================================ -->
+
+    <Style Selector="Border.StatusDot">
+        <Setter Property="Width" Value="8"/>
+        <Setter Property="Height" Value="8"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+
+    <Style Selector="Border.StatusDot.StatusOnline">
+        <Setter Property="Background" Value="{DynamicResource StatusOnline}"/>
+    </Style>
+
+    <Style Selector="Border.StatusDot.StatusOffline">
+        <Setter Property="Background" Value="{DynamicResource StatusOffline}"/>
+    </Style>
+
+    <Style Selector="Border.StatusDot.StatusUnknown">
+        <Setter Property="Background" Value="{DynamicResource StatusUnknown}"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- SEARCH BOX                                                   -->
+    <!-- ============================================================ -->
+
+    <Style Selector="TextBox.SearchBox">
+        <Setter Property="Background" Value="{DynamicResource TileBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="10,6"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBox.SearchBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- BUTTONS                                                      -->
+    <!-- ============================================================ -->
+
+    <Style Selector="Button.IconButton">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Width" Value="32"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.IconButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource TileBackgroundHover}"/>
+    </Style>
+
+    <Style Selector="Button.AccentButton">
+        <Setter Property="Background" Value="{DynamicResource AccentBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="14,6"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button.AccentButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Opacity" Value="0.85"/>
+    </Style>
+
+    <!-- ============================================================ -->
+    <!-- PANELS (settings, add-app forms, sidebars)                   -->
+    <!-- ============================================================ -->
+
+    <Style Selector="Border.Panel">
+        <Setter Property="Background" Value="{DynamicResource PanelBackground}"/>
+        <Setter Property="CornerRadius" Value="{StaticResource PanelCornerRadius}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="16"/>
+    </Style>
+
 </Styles>
