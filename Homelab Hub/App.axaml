@@ -1,0 +1,21 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Homelab_Hub"
+             x:Class="Homelab_Hub.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="/Styles.axaml"></StyleInclude>
+    </Application.Styles>
+             
+    <Application.Resources>
+        <SolidColorBrush x:Key="Yellow">Yellow</SolidColorBrush>
+    </Application.Resources>
+             
+</Application>

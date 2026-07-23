@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Homelab Hub.Browser/Homelab Hub.Browser.csproj" />
+  <Project Path="Homelab Hub/Homelab Hub.csproj" />
+</Solution>
